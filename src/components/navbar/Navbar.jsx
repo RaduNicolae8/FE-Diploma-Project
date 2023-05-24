@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import './Navbar.scss'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import newRequest from '../../utils/newRequest';
+import axios from 'axios';
+
 
 function Navbar() {
 
@@ -21,12 +24,27 @@ function Navbar() {
     };
   }, []);
 
-  const currentUser ={
-    id:1,
-    username: "Radu Nicolae",
-    isSeller: true
-  }
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try{
+      await newRequest.get('/logout');
+      localStorage.setItem("currentUser", null);
+      
+      navigate('/');
+    }catch(err){
+      if(err.message = "Network Error")
+      {
+        localStorage.setItem("currentUser", null);
+        navigate('/');
+      }
+      else{
+        console.log(err);
+      }
+    }
+  }
 
   return (
     <div className={active || pathname!=="/" ? "navbar active" : "navbar"}>
@@ -37,32 +55,32 @@ function Navbar() {
           </Link>  
         </div>
         <div className="links">
-          <span>EasyService Business</span>
+          <span>Business</span>
           <span>Explore</span>
-          <span>Sign in</span>
-          {!currentUser?.isSeller && <span>Start Selling</span>}
-          {!currentUser && <button>Register</button>}
+          {!currentUser && <Link to="login" className='link' preventScrollReset={false}>Sign in</Link>}
+          {!currentUser && <span>Start Selling</span>}
+          {!currentUser && <button className={active || pathname!=="/" ? "button active" : "button"}>Register</button>}
           {currentUser && (
             <div className="user" onClick={()=>setOpen(!open)}>
-              <span>{currentUser?.username}</span>
+              <span>{currentUser?.firstName}</span>
               {open && <div className="options">
                 {
-                  currentUser?.isSeller && (
+                  currentUser && (
                     <>
                     <Link to="/myServices" className='link'>Services</Link>
-                    <Link to="/add" className='link'>Add new service</Link>
+                    <Link to="/add" className='link' preventScrollReset={false}>Add new service</Link>
                     </>
                   )
                 }
                 <Link to="/orders" className='link'>Orders</Link>
                 <Link to="/messages" className='link'>Messages</Link>
-                <Link to="/logout" className='link'>Log out</Link>
+                <Link className='link' onClick={handleLogout}>Log out</Link>
               </div>}
             </div>
           )}
         </div>
       </div>
-      { active || pathname!=="/" && (
+      { (active || pathname!=="/") && (
         <>
         <hr />
         <div className="menu">

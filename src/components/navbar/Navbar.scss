@@ -7,6 +7,7 @@
     transition: 0.5s all ease;
     position: sticky;
     top: 0;
+    z-index: 1000;
 
     &.active{
         background-color: white;
@@ -14,10 +15,11 @@
     }
 
     .container{
-        width: 1400px;
+        width: 80%;
         display: flex;
         justify-content: space-between;
         padding: 20px 0px;
+
 
         .logo{
             font-size: 34px;
@@ -56,12 +58,19 @@
             }
 
             button{
+                display: flex;
                 color: white;
                 padding: 10px 20px;
                 border-radius: 5px;
                 border: 1px solid white;
                 cursor: pointer;
                 background-color: transparent;
+
+                &.active{
+                    color: black;
+                    font-weight: bolder;
+                    border-color:black;
+                }
 
                 &:hover{
                     background-color: #CEE5D0;
@@ -78,8 +87,9 @@
     }
 
     .menu{
-        width: 1400px;
+        width: 80%;
         padding: 10px 0px;
+        gap: 10px;
         display: flex;
         justify-content: space-between;
         font-weight: 300;

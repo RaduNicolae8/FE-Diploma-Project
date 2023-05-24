@@ -8,6 +8,10 @@ import Add from "./pages/add/Add"
 import Messages from "./pages/messages/Messages"
 import Message from "./pages/message/Message"
 import Service from "./pages/service/Service"
+import Login from "./pages/login/Login"
+import Register from "./pages/register/Register"
+import { ChakraProvider } from "@chakra-ui/react";
+
 import "./App.scss"
 
 import {
@@ -15,14 +19,70 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
+import ScrollToTop from "./utils/ScrollToTop.jsx";
 
 function App() {
 
   const Layout = () => {
+
     return (
       <div className="app">
+          <ScrollToTop />
         <Navbar />
         <Outlet />
+
+        <br />
+        <br /><br /><br /><br /><br /><br />
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
+
         <Footer />
       </div>
     )
@@ -64,6 +124,14 @@ function App() {
       {
         path: "/message/:id",
         element: <Message/>
+      },
+      {
+        path: "/login",
+        element: <Login/>
+      },
+      {
+        path: "/register",
+        element: <Register/>
       }
       ]
     },
@@ -71,7 +139,9 @@ function App() {
 
   return (
     <div>
+          <ChakraProvider>
       <RouterProvider router={router} />
+    </ChakraProvider>
     </div>
   )
 }
