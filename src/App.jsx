@@ -11,8 +11,15 @@ import Service from "./pages/service/Service"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import { ChakraProvider } from "@chakra-ui/react";
+import { useUser } from "./contexts/AuthContext";
+import { createContext } from "react";
+
 
 import "./App.scss"
+
+
+export const AuthContext = createContext(null);
+
 
 import {
   createBrowserRouter,
@@ -23,10 +30,14 @@ import ScrollToTop from "./utils/ScrollToTop.jsx";
 
 function App() {
 
+  const context = useUser();
+
+
   const Layout = () => {
 
     return (
       <div className="app">
+         <AuthContext.Provider value={context}>
           <ScrollToTop />
         <Navbar />
         <Outlet />
@@ -84,6 +95,7 @@ function App() {
         <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, distinctio? Delectus, accusantium voluptates. Doloremque, praesentium. In incidunt libero ratione repellendus, architecto quo dolorem aut voluptate modi pariatur eligendi, iste maiores?</h1>
 
         <Footer />
+        </AuthContext.Provider>
       </div>
     )
   }

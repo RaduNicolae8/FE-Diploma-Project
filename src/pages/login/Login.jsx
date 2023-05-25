@@ -195,6 +195,8 @@ import './Login.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import newRequest from '../../utils/newRequest'
 import {Button, Center, Input, Stack, Text} from "@chakra-ui/react";
+import { useContext } from 'react';
+import { AuthContext } from '../../App';
 
 function Login() {
   const [username, setUsername] = React.useState('')
@@ -202,13 +204,19 @@ function Login() {
   const [error, setError] = React.useState(null)
 
   const navigate = useNavigate()
+  const {setIsLoggedIn} = useContext(AuthContext);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     
+
+
     try{
       const res = await newRequest.post('/api/auth/login', {username, password})
-      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      //localStorage.setItem("currentUser", JSON.stringify(res.data));
+      setIsLoggedIn(true);
       navigate('/');
     }catch(err){
       setError(err.response.data.errorMessage);

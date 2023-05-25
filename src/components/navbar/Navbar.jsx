@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext} from 'react'
 import './Navbar.scss'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import newRequest from '../../utils/newRequest';
 import axios from 'axios';
+import { useUser } from '../../contexts/AuthContext';
+import { AuthContext } from '../../App';
 
 
 function Navbar() {
 
   const [active, setActive] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState(null);
 
   const {pathname} = useLocation();
 
@@ -24,20 +27,41 @@ function Navbar() {
     };
   }, []);
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  // const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+
+  //auth
+
+  const context = useContext(AuthContext);
+
+  const authUser = context.authUser;
+
+  // const {authUser, setAuthUser} = useUser();
+  
+
+  // useEffect( async ()=>{
+  //   const res = await newRequest.get('/api/auth').then(res => res.json())
+  //   .then(res => {
+  //     setAuthUser(res);
+  //     setIsLoggedIn(true);
+  //   })
+  // },[])
+
 
   const navigate = useNavigate()
 
   const handleLogout = async () => {
     try{
       await newRequest.get('/logout');
-      localStorage.setItem("currentUser", null);
+      //localStorage.setItem("currentUser", null);
       
       navigate('/');
     }catch(err){
       if(err.message = "Network Error")
       {
-        localStorage.setItem("currentUser", null);
+        //localStorage.setItem("currentUser", null);
+        context.setAuthUser(null);
+        context.setIsLoggedIn(false);
         navigate('/');
       }
       else{
@@ -57,15 +81,15 @@ function Navbar() {
         <div className="links">
           <span>Business</span>
           <span>Explore</span>
-          {!currentUser && <Link to="login" className='link' preventScrollReset={false}>Sign in</Link>}
-          {!currentUser && <span>Start Selling</span>}
-          {!currentUser && <button className={active || pathname!=="/" ? "button active" : "button"}>Register</button>}
-          {currentUser && (
+          {!authUser && <Link to="login" className='link' preventScrollReset={false}>Sign in</Link>}
+          {!authUser && <span>Start Selling</span>}
+          {!authUser && <Link to="register" className='link' preventScrollReset={false}> <button className={active || pathname!=="/" ? "button active" : "button"}>Register</button> </Link>}
+          {authUser && (
             <div className="user" onClick={()=>setOpen(!open)}>
-              <span>{currentUser?.firstName}</span>
+              <span>{authUser?.firstName}</span>
               {open && <div className="options">
                 {
-                  currentUser && (
+                  authUser && (
                     <>
                     <Link to="/myServices" className='link'>Services</Link>
                     <Link to="/add" className='link' preventScrollReset={false}>Add new service</Link>
