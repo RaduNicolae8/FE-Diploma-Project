@@ -16,7 +16,7 @@ function Navbar() {
   const {pathname} = useLocation();
 
   const isActive = () => {
-    window.scrollY > 0 ? setActive(true) : setActive(false);
+    window.scrollY > 100 ? setActive(true) : setActive(false);
   };
 
   useEffect(() => {

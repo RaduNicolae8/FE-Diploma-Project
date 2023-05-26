@@ -226,9 +226,12 @@ function Login() {
   }
 
   return (
-    <Center className='login' height ={"100vh"}>
+    <Center className='login' height ={"80vh"}>
+      
       <form onSubmit={handleSubmit}>
           <Stack gap={"0.5rem"}>
+
+      <img src="src\images\login.jpg" alt="Login" width="75" height="75" className='man'/>
 
       <label htmlFor="username">Username</label>
       <Input name="username" type="text" placeholder='youremail@gmail.com' value={username} onChange={e=>setUsername(e.target.value)}/>

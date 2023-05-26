@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import newRequest from '../../utils/newRequest'
 import {Button, Center, Input, Stack, Text} from "@chakra-ui/react";
+import './Register.scss'
+
 
 
 function Register() {
@@ -30,9 +32,13 @@ function Register() {
   }
 
   return (
+    
     <Center className='login' height ={"100vh"}>
+    
       <form onSubmit={handleSubmit}>
-          <Stack gap={"0.5rem"}>
+          <Stack gap={"0.1rem"}>
+
+      <img src="src\images\login.jpg" alt="Register" width="75" height="75" className='man'/>
 
       <label htmlFor="username">Username</label>
       <Input name="username" type="text" placeholder='youremail@gmail.com' value={email} onChange={e=>setEmail(e.target.value)}/>

@@ -13,6 +13,8 @@
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.0",
+    "axios": "^1.4.0",
+    "chakra": "^0.0.3",
     "eslint": "^8.40.0",
     "framer-motion": "^10.12.10",
     "react": "^18.2.0",
