@@ -1,30 +1,34 @@
 .catCard{
     width: 100%;
-    height: 450px;
+    height: 20rem;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     position: relative;
-    padding: 10px;
+    padding: 15px;
+    //how do i make it rounded
+    
 
     img{
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 15px;
     }
 
     .desc{
-        font-weight: 300;
+        font-weight: 400;
         position: absolute;
-        top: 15px;
-        left: 15px;
+        top: 18px;
+        left: 19px;
+        
     }
 
     .title{
         font-weight: 500;
         font-size: 24px;
         position: absolute;
-        left: 15px;
-        top: 40px;
+        left: 19px;
+        top: 43px;
     }
 }

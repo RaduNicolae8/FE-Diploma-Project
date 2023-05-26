@@ -13,16 +13,16 @@ function Featured() {
                 <div className="search">
                     <div className="searchInput">
                         <img src="src\images\search.png" alt="search" />
-                        <input type="text" placeholder='Try "Building an arduino powered Smart Home"' onChange={e=>setSearch(e.target.value)}/>
+                        <input type="text" placeholder='Try "Building an arduino powered Smart Home"' value={search} onChange={e=>setSearch(e.target.value)}/>
                     </div>
                         <button>Search</button>
                     </div>
                     <div className="popular">
                         <span>Trending:</span>
-                        <button>Web Development</button>
-                        <button>Circuit Diagnostic</button>
-                        <button>Graphic Design</button>
-                        <button>AI Services</button>
+                        <button onClick={()=>setSearch("Web Development")}>Web Development</button>
+                        <button onClick={()=>setSearch("Circuit Diagnostic")}>Circuit Diagnostic</button>
+                        <button onClick={()=>setSearch("Graphic Design")}>Graphic Design</button>
+                        <button onClick={()=>setSearch("AI Services")}>AI Services</button>
                     </div>
                 </div>
             <div className="right">
