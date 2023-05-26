@@ -17,6 +17,7 @@
     "chakra": "^0.0.3",
     "eslint": "^8.40.0",
     "framer-motion": "^10.12.10",
+    "infinite-react-carousel": "^1.2.11",
     "react": "^18.2.0",
     "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^18.2.0",
