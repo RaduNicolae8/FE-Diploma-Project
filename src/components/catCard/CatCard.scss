@@ -1,17 +1,17 @@
 .catCard{
     width: 100%;
-    height: 20rem;
+    height: 30rem;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     position: relative;
-    padding: 15px;
+    padding: 10px;
     //how do i make it rounded
     
 
     img{
-        width: 100%;
-        height: 100%;
+        width: 45vw;
+        height: 40vh;
         object-fit: cover;
         border-radius: 15px;
     }

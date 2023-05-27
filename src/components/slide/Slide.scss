@@ -1,24 +1,37 @@
 .slide{
     display: flex;
     justify-content: center;
-    padding: 100px 0px;
+    padding: 6% 0px;
 
     .container{
         width: 80%;
         position: relative;
         //background-color: red;
         gap: 20px;
+
         .carousel-prev,.carousel-next{
             width: 50px;
             height: 50px;
-            background-color: rgb(236, 224, 224);
+            background-color: rgb(255, 255, 255);
             border-radius: 50%;
             position:absolute;
             display: flex;
             top: 0;
             bottom: 0;
             margin: auto;
+            padding: 10px;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            // -ms-transform: translateY(-50%);
+            transform: translateY(-100%);
+            color: #1dbf73 !important;
             
         }
+        .carousel-next{
+            right: 1.5px;
+        }
+        .carousel-prev{
+            left: 1.5px;
+        }
+
     }
 }
