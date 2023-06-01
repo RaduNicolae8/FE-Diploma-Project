@@ -13,9 +13,15 @@ function Featured() {
                 <div className="search">
                     <div className="searchInput">
                         <img src="src\images\search.png" alt="search" />
-                        <input type="text" placeholder='Try "Building an arduino powered Smart Home"' value={search} onChange={e=>setSearch(e.target.value)}/>
+                        <input type="text" placeholder='Try "Building an arduino powered Smart Home"' value={search} onChange={e=>setSearch(e.target.value)}
+                        onKeyDown={event => {
+                            if (event.key === 'Enter') {
+                                window.location.href=`/services?search=${search}`;                            }}}
+                        />
                     </div>
-                        <button>Search</button>
+                        <button onClick={()=>{
+                            window.location.href=`/services?search=${search}`;
+                        }}>Search</button>
                     </div>
                     <div className="popular">
                         <span>Trending:</span>

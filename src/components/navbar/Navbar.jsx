@@ -79,10 +79,10 @@ function Navbar() {
           </Link>  
         </div>
         <div className="links">
-          <span>Business</span>
-          <span>Explore</span>
+          {/* <span>Business</span> */}
+          {/* <span>Explore</span> */}
           {!authUser && <Link to="login" className='link' preventScrollReset={false}>Sign in</Link>}
-          {!authUser && <span>Start Selling</span>}
+          {/* {!authUser && <span>Start Selling</span>} */}
           {!authUser && <Link to="register" className='link' preventScrollReset={false}> <button className={active || pathname!=="/" ? "button active" : "button"}>Register</button> </Link>}
           {authUser && (
             <div className="user" onClick={()=>setOpen(!open)}>
@@ -108,25 +108,25 @@ function Navbar() {
         <>
         <hr />
         <div className="menu">
-          <Link to="/" className='link'> 
+          <Link to="/services?id=1" className='link'> 
             Tutoring 
           </Link>
-          <Link to="/" className='link'> 
+          <Link to="/services?id=2" className='link'> 
             Homework Assistance 
           </Link>
-          <Link to="/" className='link'> 
+          <Link to="/services?id=3" className='link'> 
             Circuit Repair 
           </Link>
-          <Link to="/" className='link'> 
+          <Link to="/services?id=4" className='link'> 
             Circuit Design 
           </Link>
-          <Link to="/" className='link'> 
+          <Link to="/services?id=5" className='link'> 
             Housekeeping 
           </Link>
-          <Link to="/" className='link'> 
+          <Link to="/services?id=6" className='link'> 
             Career Assistance 
           </Link>
-          <Link to="/" className='link'> 
+          <Link to="/services?id=7" className='link'> 
             General Services 
           </Link>
         </div>
