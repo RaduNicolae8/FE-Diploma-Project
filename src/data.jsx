@@ -57,6 +57,7 @@ export const cards = [
       price: 59,
       star: 5,
       username: "Anna Bell",
+      isRequest: false,
     },
     {
       id: 2,
@@ -65,6 +66,7 @@ export const cards = [
       price: 79,
       star: 5,
       username: "Lannie Coleman",
+      isRequest: false,
     },
     {
       id: 3,
@@ -73,6 +75,7 @@ export const cards = [
       price: 112,
       star: 5,
       username: "Carol Steve",
+      isRequest: true,
     },
     {
       id: 4,
@@ -81,6 +84,7 @@ export const cards = [
       price: 99,
       star: 4,
       username: "Don Weber",
+      isRequest: false,
     },
     {
       id: 5,
@@ -89,6 +93,7 @@ export const cards = [
       price: 59,
       star: 5,
       username: "Audrey Richards",
+      isRequest: false,
     },
     {
       id: 6,
@@ -97,6 +102,7 @@ export const cards = [
       price: 79,
       star: 4,
       username: "Walton Shepard ",
+      isRequest: true,
     },
     {
       id: 7,
@@ -105,6 +111,7 @@ export const cards = [
       price: 89,
       star: 5,
       username: "Waverly Schaefer",
+      isRequest: false,
     },
     {
       id: 8,
@@ -113,5 +120,6 @@ export const cards = [
       price: 110,
       star: 4,
       username: "Wilton Hunt",
+      isRequest: false,
     },
   ];
