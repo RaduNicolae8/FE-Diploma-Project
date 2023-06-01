@@ -21,7 +21,7 @@ const Home = () => {
             <h1>A whole world of co-production at your fingertips</h1>
             <div className="title">
               <img src="src\images\check2.png" alt="" />
-              Intuitive design and easeness of use
+              Intuitive design and easy to use
               
             </div>
             <p>
