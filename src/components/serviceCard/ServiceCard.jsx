@@ -10,6 +10,7 @@ function ServiceCard({item}) {
         <div className="info">
             <div className="user">
                 <span>{item.username}</span>
+                {item.isRequest === true ? <span className='isRequest'>[Requested]</span> : null}
             </div>
             <p>{item.desc}</p>
             <div className="star">
