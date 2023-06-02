@@ -39,7 +39,6 @@ export const useUser = () => {
   );
 
   useEffect(  () => {
-    if(isLoggedIn){
         newRequest
         .get("/api/auth")
         // .then((res) => {console.log(res);
@@ -47,7 +46,7 @@ export const useUser = () => {
         .then((res) => {
           setAuthUser(res.data);
         });
-    }
+    
   }, [isLoggedIn]);
 
 //   console.log(authUser);

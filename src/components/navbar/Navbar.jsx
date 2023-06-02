@@ -1,4 +1,4 @@
-import React, { useEffect, useContext} from 'react'
+import React, { useEffect, useContext, useRef} from 'react'
 import './Navbar.scss'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import newRequest from '../../utils/newRequest';
@@ -12,6 +12,8 @@ function Navbar() {
   const [active, setActive] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState(null);
+  const node = useRef();
+
 
   const {pathname} = useLocation();
 
@@ -19,11 +21,21 @@ function Navbar() {
     window.scrollY > 100 ? setActive(true) : setActive(false);
   };
 
+  const handleClickOutside = e => {
+    if (node.current.contains(e.target)) {
+        // inside click
+        return;
+    }
+    // outside click 
+    setOpen(false);
+};
+
   useEffect(() => {
     window.addEventListener("scroll", isActive);
-
+    document.addEventListener("mousedown", handleClickOutside );
     return () => {
       window.removeEventListener("scroll", isActive);
+      document.removeEventListener("mousedown", handleClickOutside );
     };
   }, []);
 
@@ -85,7 +97,7 @@ function Navbar() {
           {/* {!authUser && <span>Start Selling</span>} */}
           {!authUser && <Link to="register" className='link' preventScrollReset={false}> <button className={active || pathname!=="/" ? "button active" : "button"}>Register</button> </Link>}
           {authUser && (
-            <div className="user" onClick={()=>setOpen(!open)}>
+            <div className="user"  ref={node} onClick={()=>setOpen(!open)}>
               <span>{authUser?.firstName}</span>
               {open && <div className="options">
                 {
