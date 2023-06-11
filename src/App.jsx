@@ -61,7 +61,7 @@ function App() {
         element: <Services/>
       },
       {
-        path: "/service/:id",
+        path: "/service",
         element: <Service/>
       },
       {
