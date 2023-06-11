@@ -27,7 +27,7 @@ function Featured() {
                         <span>Trending:</span>
                         <button onClick={()=>setSearch("Web Development")}>Web Development</button>
                         <button onClick={()=>setSearch("Circuit Diagnostic")}>Circuit Diagnostic</button>
-                        <button onClick={()=>setSearch("Graphic Design")}>Graphic Design</button>
+                        <button onClick={()=>setSearch("Online Tutoring")}>Online Tutoring</button>
                         <button onClick={()=>setSearch("AI Services")}>AI Services</button>
                     </div>
                 </div>
