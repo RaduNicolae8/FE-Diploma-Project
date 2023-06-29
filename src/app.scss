@@ -5,4 +5,16 @@
         text-decoration: none;
         color: inherit;
     }
+
+}
+
+// ::-webkit-scrollbar {
+//     display: none;
+// }
+::-webkit-scrollbar{
+    width:12px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(133, 131, 131);
+    border-radius: 10px;
 }

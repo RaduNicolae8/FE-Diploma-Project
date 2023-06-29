@@ -1,0 +1,58 @@
+.myServices{
+    display: flex;
+    justify-content: center;
+    .container{
+        width: 80%;
+        padding: 50px 0px;
+
+        .title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-size: 30px;
+                font-weight: 500;
+            }
+
+            button{
+                background-color: #1dbf73;
+                color:white;
+                font-weight: 500;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+        }
+
+        table{
+            width: 100%;
+
+            tr{
+                height: 50px;
+                th{
+                    text-align: left;
+                    padding: 10px;
+                }
+
+                td{
+                    padding: 10px;
+
+                    .img{
+                        width: 80px;
+                        height: 60px;
+                        object-fit: cover;
+                    }
+
+                    .delete{
+                        width: 20px;
+                        cursor: pointer;
+                    }
+                }
+
+                &:nth-child(even){
+                    background-color: #f5f5f5;
+                }
+            }
+        }
+    }
+}

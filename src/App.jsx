@@ -2,8 +2,8 @@ import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 import Home from "./pages/home/Home"
 import Services from "./pages/services/Services"
-import Orders from "./pages/orders/Orderz"
-import MyServices from "./pages/myservices/MyServices"
+import Orders from "./pages/orders/Orders"
+import MyServices from "./pages/myServices/MyServices"
 import Add from "./pages/add/Add"
 import Messages from "./pages/messages/Messages"
 import Message from "./pages/message/Message"
@@ -81,7 +81,7 @@ function App() {
         element: <Messages/>
       },
       {
-        path: "/message/:id",
+        path: "/message",
         element: <Message/>
       },
       {
