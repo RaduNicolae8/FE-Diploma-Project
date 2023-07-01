@@ -45,6 +45,7 @@ export const useUser = () => {
         //     return res.json(); })
         .then((res) => {
           setAuthUser(res.data);
+        //  console.log(res.data);
         });
     
   }, [isLoggedIn]);

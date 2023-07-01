@@ -7,21 +7,25 @@ import { useUser } from '../../contexts/AuthContext';
 import { AuthContext } from '../../App';
 
 
+
 function Navbar() {
 
   const [active, setActive] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState(null);
+  const [base64, setBase64] = React.useState(null);
   const node = useRef();
 
 
   const {pathname} = useLocation();
 
+
+  
   const isActive = () => {
     window.scrollY > 100 ? setActive(true) : setActive(false);
   };
 
-  const handleClickOutside = e => {
+  const handleClickOutside =  e => {
     if (node.current.contains(e.target)) {
         // inside click
         return;
@@ -30,9 +34,10 @@ function Navbar() {
     setOpen(false);
 };
 
-  useEffect(() => {
+  useEffect( () => {
     window.addEventListener("scroll", isActive);
     document.addEventListener("mousedown", handleClickOutside );
+
     return () => {
       window.removeEventListener("scroll", isActive);
       document.removeEventListener("mousedown", handleClickOutside );
@@ -98,6 +103,10 @@ function Navbar() {
           {!authUser && <Link to="register" className='link' preventScrollReset={false}> <button className={active || pathname!=="/" ? "button active" : "button"}>Register</button> </Link>}
           {authUser && (
             <div className="user"  ref={node} onClick={()=>setOpen(!open)}>
+              {authUser.image === null ? 
+              <img src="src\images\profilepic.png" alt=""/>
+              : <img src={authUser.img} alt="" />
+              }
               <span>{authUser?.firstName}</span>
               {open && <div className="options">
                 {
