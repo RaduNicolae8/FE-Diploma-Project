@@ -1,6 +1,5 @@
 import React from 'react'
 import './Message.scss'
-import { Scrollbars } from 'react-custom-scrollbars';
 
 function Message() {
   return (

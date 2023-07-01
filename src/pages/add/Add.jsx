@@ -1,12 +1,49 @@
 import React from 'react'
+import { useState } from 'react'
 import './Add.scss'
+import axios from 'axios'
 
 const Add = () => {
+
+  const [file, setFile] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const url = await upload(file);
+
+      console.log(url);
+  };
+
+  const upload = async (file) => {
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "EasyService");
+
+    try{
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/di0ub0hhl/image/upload",
+        data
+      );
+      return res.data.url;
+    }catch(err){
+      console.log(err);
+    }
+  };
+
+  const handleChange = (e) => {
+    setUser((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+
   return (
     <div className='add' >
       <div className="container">
         <h1>Add New Service</h1>
         <div className="sections">
+          <form onSubmit={handleSubmit}>
           <div className="left">
             <label htmlFor="">Title</label>
             <input type="text" placeholder='e.g. I will do something...'/>
@@ -21,7 +58,7 @@ const Add = () => {
               <option value="General Services">General Services</option>
             </select>
             <label htmlFor="">Cover Image</label>
-            <input type="file" />
+            <input type="file"  onChange={(e) => setFile(e.target.files[0])} />
             <label htmlFor="">Upload Images</label>
             <input type="file" multiple/>
             <label htmlFor="">Description</label>
@@ -45,6 +82,7 @@ const Add = () => {
             <input type="number" min={1} />
 
           </div>
+          </form>
         </div>
       </div>
     </div>
