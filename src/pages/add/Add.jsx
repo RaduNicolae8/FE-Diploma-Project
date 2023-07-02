@@ -2,17 +2,73 @@ import React from 'react'
 import { useState } from 'react'
 import './Add.scss'
 import axios from 'axios'
+import { useContext } from 'react'
+import { AuthContext } from '../../App'
+import newRequest from '../../utils/newRequest'
+
 
 const Add = () => {
 
+  const context = useContext(AuthContext);
+  const authUser = context.authUser;
+
   const [file, setFile] = useState(null);
+  const [files, setFiles] = useState(null);
+  const [service, setService] = useState({
+    title: '',
+    description: '',
+    shortDescription: '',
+    tags: '',
+    price: '',
+    categoryId: 1,
+    userId: '',
+    coverImage: ''
+  });
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = await upload(file);
+     const url = await upload(file);
+      service.coverImage = url;
+    
 
-      console.log(url);
+      console.log(service);
+
+    try{
+      service.userId = authUser.id;
+      const res = await newRequest.post('/api/service/save', {...service})
+
+      console.log(res);
+
+      
+        const filesArray = Array.from(files);
+        filesArray.forEach(async (file) => {
+      
+
+        const url = await upload(file);
+        console.log(url);
+        console.log(res.data.id);
+        const image ={
+          url:url,
+          serviceId: res.data.id
+        }
+        const res2 = await newRequest.post('/api/images/save', {...image})
+        console.log(res2);
+        //console.log(url);
+        // after posting the service, post the images from the ID of the returned service
+        
+      
+      });
+
+      const res3 = await newRequest.get('/api/images/find', {params: {id: 10}});
+      console.log(res3);
+
+    }catch(err){
+      console.log(err);
+    }
   };
 
   const upload = async (file) => {
@@ -32,10 +88,26 @@ const Add = () => {
   };
 
   const handleChange = (e) => {
-    setUser((prev) => {
+    setService((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   const url = await upload(file);
+  //   user.img = url;
+  //   console.log(user.img);
+  //   console.log(url);
+  //   try{
+  //     const res = await newRequest.post('/api/auth/register', {...user})
+  //     navigate('/login');
+  //   }catch(err){
+  //     setError(err.response.data.errorMessage);
+  //     console.log(err.response.data.errorMessage);
+  //   }
+    
+  // }
 
 
   return (
@@ -43,46 +115,41 @@ const Add = () => {
       <div className="container">
         <h1>Add New Service</h1>
         <div className="sections">
-          <form onSubmit={handleSubmit}>
           <div className="left">
             <label htmlFor="">Title</label>
-            <input type="text" placeholder='e.g. I will do something...'/>
+            <input name="title" type="text" placeholder='e.g. I will do something...' onChange={handleChange}/>
             <label htmlFor="">Category</label>
-            <select name="cats" id="">
-              <option value="Tutoring">Tutoring</option>
-              <option value="Homework Assistance">Homework Assistance</option>
-              <option value="Circuit Repair">Circuit Repair</option>
-              <option value="Circuit Design">Circuit Design</option>
-              <option value="Housekeeping">Housekeeping</option>
-              <option value="Career Assistance">Career Assistance</option>
-              <option value="General Services">General Services</option>
+            <select name="categoryId" id="" onChange={handleChange}>
+              <option value="1">Tutoring</option>
+              <option value="2">Homework Assistance</option>
+              <option value="3">Circuit Repair</option>
+              <option value="4">Circuit Design</option>
+              <option value="5">Housekeeping</option>
+              <option value="6">Career Assistance</option>
+              <option value="7">General Services</option>
             </select>
             <label htmlFor="">Cover Image</label>
             <input type="file"  onChange={(e) => setFile(e.target.files[0])} />
             <label htmlFor="">Upload Images</label>
-            <input type="file" multiple/>
+            <input type="file" multiple onChange={(e) => setFiles(e.target.files)}/>
             <label htmlFor="">Description</label>
-            <textarea name="" id="" cols="30" rows="16" placeholder='Brief description to introduce your service to customers'></textarea>
-            <button>Create</button>
+            <textarea name="description" id="" cols="30" rows="16" placeholder='A description to introduce your service to customers' onChange={handleChange}></textarea>
+            <button onClick={handleSubmit}>Create</button>
           </div>
           <div className="right">
 
             <label htmlFor="">Service Title</label>
-            <input type="text" placeholder='e.g. Algebra Tutoring' />
+            <input type="text" placeholder='e.g. Algebra Tutoring' onChange={handleChange} />
             <label htmlFor="">Short Description</label>
-            <textarea name="" id="" cols="30" rows="10" placeholder='Short description of your service'></textarea>
-            <label htmlFor="">Delivery Time(e.g. 2 days)</label>
-            <input type="number" min={1} />
+            <textarea name="shortDescription" id="" cols="30" rows="10" placeholder='Brief description of your service' onChange={handleChange} ></textarea>
+            <label htmlFor="">Delivery Time</label>
+            <input type="number" min={1}  placeholder='e.g. 2 days' onChange={handleChange}/>
             <label htmlFor="">Tags</label>
-            <input type="text" placeholder='e.g. Algebra' />
-            <input type="text" placeholder='e.g. Tutoring' />
-            <input type="text" placeholder='e.g. Math' />
-            <input type="text" placeholder='e.g. Integrals' />
+            <input name="tags" type="text" placeholder='e.g. Algebra,Tutoring,Math,etc' onChange={handleChange} />
             <label htmlFor="">Price</label>
-            <input type="number" min={1} />
+            <input name="price" type="number" min={1} onChange={handleChange} />
 
           </div>
-          </form>
         </div>
       </div>
     </div>
