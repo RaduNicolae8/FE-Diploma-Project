@@ -1,44 +1,108 @@
 import React from 'react'
 import './Service.scss'
 import Slide from '../../components/slide/Slide'
+import { useParams } from 'react-router-dom'
+import starImage from '../../images/star.png';
+import { useEffect } from 'react';
+import newRequest from '../../utils/newRequest';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
+import { render } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 function Service() {
+
+
+const { id } = useParams();
+const [images, setImages] = useState([]);
+const [service, setService] = useState({});
+const navigate = useNavigate();
+console.log(images);
+
+
+const { isLoading, error, data } = useQuery({
+  queryKey: ["images"],
+  queryFn: () =>{
+
+    newRequest.get('/api/service/'+id).then((res) => {
+        
+        setService(res.data);
+        console.log(res);
+        console.log(service)
+        //console.log(images);
+        //console.log(res.data);
+        // return res.data;
+    
+    })
+
+    newRequest.get('/api/images/find', {params: {id: id}}).then((res) => {
+
+      const updatedImages = res.data.map(item => item.url);
+      setImages(updatedImages);
+      console.log(images)
+      console.log(res);
+      //console.log(images);
+      //console.log(res.data);
+      // return res.data;
+    })
+
+  },
+});
+
+
+const handleClick = () => {
+  navigate('/message')
+}
+
+// if(images.length === 0){
+//   return <h1>Loading...</h1>}
+//   else
   return (
     <div className='service'>
+      {isLoading && <h1>Loading...</h1>
+      ||
+      error && <h1>Error</h1>
+      ||
       <div className="container">
         <div className="leftright">
 
         <div className="left">
-          <h1>I will generate images for your website </h1>
+          {/* <h1>I will generate images for your website </h1> */}
+          <h1>{service.title} </h1>
+          {/* <h1>{id}</h1> */}
           <div className="user">
-            <span>Anna Bell</span>
+            <span>
+              {/* Anna Bell */}
+              {service?.user?.firstName} {service?.user?.lastName}
+              </span>
             <div className="stars">
-              <img src="src\images\star.png" alt="star" />
-              <img src="src\images\star.png" alt="star" />
-              <img src="src\images\star.png" alt="star" />
-              <img src="src\images\star.png" alt="star" />
-              <img src="src\images\star.png" alt="star" />
+              <img src={starImage} alt="star" />
+              <img src={starImage} alt="star" />
+              <img src={starImage} alt="star" />
+              <img src={starImage} alt="star" />
+              <img src={starImage} alt="star" />
               <span>5</span>
             </div>
           </div>
 
+          { images.length === 0 ? <h1>Loading...</h1> :
           <Slide slidesToShow={1} arrowScroll={1}>
-            <img
-              src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="error"
-              />
-            <img
-              src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="error"
-              />
-            <img
-              src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="error"
-              />
-          </Slide>
+          {
+            images.map((img) => (
+                <img key={img} src={img} alt="" />
+              ))}
+              
+              
+          </Slide> 
+
+          }
+          
+
+
           <h2>Service Description</h2>
           <p>
-          As a seasoned graphic designer with over 10 years of experience, I specialize in creating captivating, custom images that will elevate your website to new heights. With my service, you can stand out in today's crowded digital landscape and effectively communicate your brand's story to your audience.<br /><br />
+          {/* As a seasoned graphic designer with over 10 years of experience, I specialize in creating captivating, custom images that will elevate your website to new heights. With my service, you can stand out in today's crowded digital landscape and effectively communicate your brand's story to your audience.<br /><br />
           Service Features:<br />
           Custom Designed Images: Say goodbye to stock images that just don't capture the essence of your brand. With my service, you get 100% custom designed images that are specifically tailored to your brand's aesthetics, mission, and objectives. <br />
           High-Quality Graphics: All images will be delivered in high-resolution, ready for web or print use. They will look stunning on all screen sizes, from mobile devices to desktop monitors.<br />
@@ -48,42 +112,49 @@ function Service() {
           I work with businesses of all sizes, from startups to established companies, across a range of industries. Whether you need images for your homepage, product pages, blog posts, or social media, I've got you covered.<br />
           Let me help you create a visually compelling website that resonates with your audience and drives results. Place an order today, and let's bring your vision to life!<br />
           Please don't hesitate to message me if you have any questions. I'm always happy to discuss your project's needs and offer a bespoke solution that fits your budget and timeline.<br />
-          Stand out from the crowd. Stand out with custom designed images. I look forward to working with you!
+          Stand out from the crowd. Stand out with custom designed images. I look forward to working with you! */}
+          {service.description}
           </p>
+
 
          </div>
          <div className="right">
 
-         
+        
+              
           <div className="seller">
             {/* <h2>About The Seller</h2> */}
             <div className="user">
               <img
-                src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                // src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                src={service?.user?.img}
                 alt=""
               />
               <div className="info">
-                <span>Anna Bell</span>
+                <span>
+                  {/* Anna Bell */}
+                  {service?.user?.firstName} {service?.user?.lastName}
+                  </span>
                 <div className="stars">
-                  <img src="src\images\star.png" alt="" />
-                  <img src="src\images\star.png" alt="" />
-                  <img src="src\images\star.png" alt="" />
-                  <img src="src\images\star.png" alt="" />
-                  <img src="src\images\star.png" alt="" />
+                  <img src={starImage} alt="" />
+                  <img src={starImage} alt="" />
+                  <img src={starImage} alt="" />
+                  <img src={starImage} alt="" />
+                  <img src={starImage} alt="" />
                   <span>5</span>
                 </div>
-                <button>Contact Me</button>
+                <button onClick={handleClick}>Contact Me</button>
               </div>
             </div>
             <div className="box">
               <div className="items">
                 <div className="item">
                   <span className="title">From</span>
-                  <span className="desc">USA</span>
+                  <span className="desc">{service?.user?.country}</span>
                 </div>
                 <div className="item">
                   <span className="title">Member since</span>
-                  <span className="desc">Aug 2022</span>
+                  <span className="desc">July 2023</span>
                 </div>
                 <div className="item">
                   <span className="title">Avg. response time</span>
@@ -95,12 +166,13 @@ function Service() {
                 </div>
                 <div className="item">
                   <span className="title">Languages</span>
-                  <span className="desc">English</span>
+                  <span className="desc">{service?.user?.languages}</span> 
                 </div>
               </div>
               <hr />
               <p>
-              Hello there! I'm Anna, a passionate graphic designer with over 10 years of experience. I've helped businesses worldwide to captivate their audience with unique and high-quality images. Let me transform your website into a visually stunning platform that resonates with your brand's story!
+              {/* Hello there! I'm Anna, a passionate graphic designer with over 10 years of experience. I've helped businesses worldwide to captivate their audience with unique and high-quality images. Let me transform your website into a visually stunning platform that resonates with your brand's story! */}
+              {service?.user?.description}
               </p>
             </div>
           </div>
@@ -113,11 +185,11 @@ function Service() {
                 <span>John Doe</span>
               </div>
               <div className="stars">
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="heart" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="heart" />
                 <span>5</span>
               </div>
               <p>
@@ -129,11 +201,11 @@ function Service() {
                 <span>Jane Doe</span>
               </div>
               <div className="stars">
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="heart" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="heart" />
                 <span>5</span>
               </div>
               <p>
@@ -146,11 +218,11 @@ function Service() {
                 <span>Adam Smith</span>
               </div>
               <div className="stars">
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="star" />
-                <img src="src\images\star.png" alt="heart" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="star" />
+                <img src={starImage} alt="heart" />
                 <span>5</span>
               </div>
               <p>
@@ -159,7 +231,7 @@ function Service() {
             </div>
           </div>
         </div>
-      
+    }
     </div>
   )
 }

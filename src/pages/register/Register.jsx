@@ -25,7 +25,10 @@ function Register() {
     isSeller: false,
     phoneNumber: "",
     description: "",
-    roleId: 2
+    roleId: 2,
+    country: "",
+    languages: "",
+
   });
 
   const [error, setError] = React.useState(null)
@@ -147,6 +150,20 @@ function Register() {
             <span className="slider round"></span>
           </label>
         </div>
+        <label htmlFor="">Country</label>
+        <input
+          name="country"
+          type="text"
+          placeholder="Romania"
+          onChange={handleChange}
+        />
+        <label htmlFor="">Languages</label>
+        <input
+          name="languages"
+          type="text"
+          placeholder="English, Romanian"
+          onChange={handleChange}
+        />
         <label htmlFor="">Phone Number</label>
         <input
           name="phoneNumber"

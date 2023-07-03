@@ -13,6 +13,7 @@ import Register from "./pages/register/Register"
 import { ChakraProvider } from "@chakra-ui/react";
 import { useUser } from "./contexts/AuthContext";
 import { createContext } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 
 import "./App.scss"
@@ -31,18 +32,22 @@ import ScrollToTop from "./utils/ScrollToTop.jsx";
 function App() {
 
   const context = useUser();
+  const queryClient = new QueryClient();
+
 
 
   const Layout = () => {
 
     return (
       <div className="app">
+        <QueryClientProvider client={queryClient}>
          <AuthContext.Provider value={context}>
           <ScrollToTop />
         <Navbar />
         <Outlet />
         <Footer />
         </AuthContext.Provider>
+        </QueryClientProvider>
       </div>
     )
   }
@@ -61,7 +66,7 @@ function App() {
         element: <Services/>
       },
       {
-        path: "/service",
+        path: "/service/:id",
         element: <Service/>
       },
       {

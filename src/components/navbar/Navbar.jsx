@@ -28,6 +28,7 @@ function Navbar() {
   const handleClickOutside =  e => {
     if (node.current.contains(e.target)) {
         // inside click
+        console.log(authUser)
         return;
     }
     // outside click 
@@ -37,6 +38,7 @@ function Navbar() {
   useEffect( () => {
     window.addEventListener("scroll", isActive);
     document.addEventListener("mousedown", handleClickOutside );
+   
 
     return () => {
       window.removeEventListener("scroll", isActive);

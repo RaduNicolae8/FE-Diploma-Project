@@ -13,11 +13,19 @@ function Services() {
     setOpen(false);
   }
 
+  const [pageable,setpagebable] = React.useState({
+  size : '',
+  page : '',
+  sort : '',
+  
+  });
+  //get request to get -> services
+  // check data.jsx for data structure
 
   return (
     <div className='services'>
       <div className="container">
-        {/*span?  */}
+
         <h1>Category Name</h1>
         <p>
           Category description Lorem ipsum dolor sit amet consectetur adipisicing elit.

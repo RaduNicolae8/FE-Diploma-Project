@@ -5,10 +5,12 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { AuthContext } from '../../App'
 import newRequest from '../../utils/newRequest'
+import { useNavigate } from 'react-router-dom'
 
 
 const Add = () => {
 
+  const navigate = useNavigate()
   const context = useContext(AuthContext);
   const authUser = context.authUser;
 
@@ -22,10 +24,14 @@ const Add = () => {
     price: '',
     categoryId: 1,
     userId: '',
-    coverImage: ''
+    coverImage: '',
+    isRequest: false
   });
 
 
+  function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+}
 
 
   const handleSubmit = async (e) => {
@@ -35,13 +41,13 @@ const Add = () => {
       service.coverImage = url;
     
 
-      console.log(service);
+      //console.log(service);
 
     try{
       service.userId = authUser.id;
       const res = await newRequest.post('/api/service/save', {...service})
 
-      console.log(res);
+     // console.log(res);
 
       
         const filesArray = Array.from(files);
@@ -49,22 +55,23 @@ const Add = () => {
       
 
         const url = await upload(file);
-        console.log(url);
-        console.log(res.data.id);
+       // console.log(url);
+       // console.log(res.data.id);
         const image ={
           url:url,
           serviceId: res.data.id
         }
         const res2 = await newRequest.post('/api/images/save', {...image})
-        console.log(res2);
+        //console.log(res2);
         //console.log(url);
         // after posting the service, post the images from the ID of the returned service
         
       
       });
 
-      const res3 = await newRequest.get('/api/images/find', {params: {id: 10}});
-      console.log(res3);
+
+        await timeout(500);
+      navigate('/service/'+res.data.id);
 
     }catch(err){
       console.log(err);
@@ -109,6 +116,13 @@ const Add = () => {
     
   // }
 
+   const handleRequest = (e) => {
+    setService((prev) => {
+      return { ...prev, isRequest: e.target.checked };
+    });
+  
+  };
+
 
   return (
     <div className='add' >
@@ -118,16 +132,6 @@ const Add = () => {
           <div className="left">
             <label htmlFor="">Title</label>
             <input name="title" type="text" placeholder='e.g. I will do something...' onChange={handleChange}/>
-            <label htmlFor="">Category</label>
-            <select name="categoryId" id="" onChange={handleChange}>
-              <option value="1">Tutoring</option>
-              <option value="2">Homework Assistance</option>
-              <option value="3">Circuit Repair</option>
-              <option value="4">Circuit Design</option>
-              <option value="5">Housekeeping</option>
-              <option value="6">Career Assistance</option>
-              <option value="7">General Services</option>
-            </select>
             <label htmlFor="">Cover Image</label>
             <input type="file"  onChange={(e) => setFile(e.target.files[0])} />
             <label htmlFor="">Upload Images</label>
@@ -138,8 +142,24 @@ const Add = () => {
           </div>
           <div className="right">
 
-            <label htmlFor="">Service Title</label>
-            <input type="text" placeholder='e.g. Algebra Tutoring' onChange={handleChange} />
+            {/* <label htmlFor="">Are you requesting this service?</label> */}
+            <div className="toggle">
+              <label htmlFor="">Is this service a request? </label>
+              <label className="switch">
+                <input type="checkbox" onChange={handleRequest} />
+                <span className="slider round"></span>
+              </label>
+            </div>
+            <label htmlFor="">Category</label>
+            <select name="categoryId" id="" onChange={handleChange}>
+              <option value="1">Tutoring</option>
+              <option value="2">Homework Assistance</option>
+              <option value="3">Circuit Repair</option>
+              <option value="4">Circuit Design</option>
+              <option value="5">Housekeeping</option>
+              <option value="6">Career Assistance</option>
+              <option value="7">General Services</option>
+            </select>
             <label htmlFor="">Short Description</label>
             <textarea name="shortDescription" id="" cols="30" rows="10" placeholder='Brief description of your service' onChange={handleChange} ></textarea>
             <label htmlFor="">Delivery Time</label>
