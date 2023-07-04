@@ -3,13 +3,44 @@ import './ServiceCard.scss'
 import { Link } from 'react-router-dom'
 import starImage from '../../images/star.png';
 import heartImage from '../../images/heart.png';
+import redHeartImage from '../../images/redHeart.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../App';
+import newRequest from '../../utils/newRequest';
+import { useState } from 'react';
+
+
+
 
 
 function ServiceCard({item}) {
+
+function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+}
+
+const context = useContext(AuthContext);
+const authUser = context.authUser;
+const [heartImg, setHeartImg] = useState(heartImage);
+
+const handleClick =  async (id) => {
+    var heartRequest = {userId:authUser.id, serviceId:id};
+    console.log(heartRequest);
+    if(heartImg === heartImage)
+     newRequest.post('/api/starred-service/save',{...heartRequest}).then(async (res) => {
+        //console.log(res);
+        
+        setHeartImg(redHeartImage);
+    })
+    else {
+        await newRequest.delete('/api/starred-service/delete',{params:{userId:authUser.id,serviceId:id}})
+        setHeartImg(heartImage);
+    }
+}
+
   return (
-    <Link to ={ "/service/"+ item.id }>
-        {/* should be /item.id */}
     <div className='serviceCard'>
+        <Link to ={ "/service/"+ item.id }>
         <img src={item.coverImage} alt="" />
         <div className="info">
             <div className="user">
@@ -28,9 +59,10 @@ function ServiceCard({item}) {
                     </span>
             </div>
         </div>
+        </Link>
         <hr />
         <div className="details">
-            <img src={heartImage} alt="" />
+            <img src={heartImg} alt="" onClick={()=>handleClick(item.id)}/>
             <div className="price">
 
             <span>Starting at</span>
@@ -38,7 +70,7 @@ function ServiceCard({item}) {
             </div>
         </div>
     </div>
-    </Link>
+    
   )
 }
 

@@ -13,6 +13,7 @@ function MyServices() {
 
   const authUser = context.authUser;
   const [services, setServices] = useState([{}]);
+  const [search, setSearch] = useState([{}]);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["servicesbyid"],
@@ -21,7 +22,7 @@ function MyServices() {
       newRequest.get('/api/service/get/user',{params : {userId:authUser.id}}).then((res) => {
           
           setServices(res.data);
-          console.log(res);
+          //console.log(res);
           //console.log(services);
       
       })

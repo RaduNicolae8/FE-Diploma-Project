@@ -28,6 +28,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
+import Search from "./pages/search/Search"
 
 function App() {
 
@@ -66,11 +67,15 @@ function App() {
         element: <Services/>
       },
       {
+        path: "/search/:search",
+        element: <Search/>
+      },
+      {
         path: "/service/:id",
         element: <Service/>
       },
       {
-        path: "/orders",
+        path: "/favorites",
         element: <Orders/>
       },
       {

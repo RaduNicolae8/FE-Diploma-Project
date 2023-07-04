@@ -16,11 +16,11 @@ function Featured() {
                         <input type="text" placeholder='Try "Building an arduino powered Smart Home"' value={search} onChange={e=>setSearch(e.target.value)}
                         onKeyDown={event => {
                             if (event.key === 'Enter') {
-                                window.location.href=`/services?search=${search}`;                            }}}
+                                window.location.href=`/search/${search}`; }}}
                         />
                     </div>
                         <button onClick={()=>{
-                            window.location.href=`/services?search=${search}`;
+                            window.location.href=`/search/${search}`;
                         }}>Search</button>
                     </div>
                     <div className="popular">

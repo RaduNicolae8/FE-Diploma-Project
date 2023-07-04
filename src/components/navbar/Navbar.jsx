@@ -127,7 +127,7 @@ function Navbar() {
                     </>
                   )
                 }
-                <Link to="/orders" className='link'>Orders</Link>
+                <Link to="/favorites" className='link'>Favorites</Link>
                 <Link to="/messages" className='link'>Messages</Link>
                 <Link className='link' onClick={handleLogout}>Log out</Link>
               </div>}
