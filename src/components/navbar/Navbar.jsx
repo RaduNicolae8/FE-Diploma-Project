@@ -20,6 +20,14 @@ function Navbar() {
   const {pathname} = useLocation();
 
 
+  function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
+
+  const handleClick = async () => {
+    await timeout(50);
+    window.location.reload();
+  };
   
   const isActive = () => {
     window.scrollY > 100 ? setActive(true) : setActive(false);
@@ -131,25 +139,25 @@ function Navbar() {
         <>
         <hr />
         <div className="menu">
-          <Link to="/services?id=1" className='link'> 
+          <Link to="/services/1" className='link' onClick={handleClick}> 
             Tutoring 
           </Link>
-          <Link to="/services?id=2" className='link'> 
+          <Link to="/services/2" className='link' onClick={handleClick}> 
             Homework Assistance 
           </Link>
-          <Link to="/services?id=3" className='link'> 
+          <Link to="/services/3" className='link' onClick={handleClick}> 
             Circuit Repair 
           </Link>
-          <Link to="/services?id=4" className='link'> 
+          <Link to="/services/4" className='link' onClick={handleClick}> 
             Circuit Design 
           </Link>
-          <Link to="/services?id=5" className='link'> 
+          <Link to="/services/5" className='link' onClick={handleClick}> 
             Housekeeping 
           </Link>
-          <Link to="/services?id=6" className='link'> 
+          <Link to="/services/6" className='link' onClick={handleClick}> 
             Career Assistance 
           </Link>
-          <Link to="/services?id=7" className='link'> 
+          <Link to="/services/7" className='link' onClick={handleClick}> 
             General Services 
           </Link>
         </div>

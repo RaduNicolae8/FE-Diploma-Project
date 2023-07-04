@@ -17,11 +17,11 @@ const Add = () => {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState(null);
   const [service, setService] = useState({
-    title: '',
+    title: 'Service title here',
     description: '',
-    shortDescription: '',
-    tags: '',
-    price: '',
+    shortDescription: 'short description here .................',
+    tags: 'tags',
+    price: 50,
     categoryId: 1,
     userId: '',
     coverImage: '',
@@ -61,6 +61,9 @@ const Add = () => {
           url:url,
           serviceId: res.data.id
         }
+        const old_description = service.description.replace(/\\n/g, '<br>');
+        service.description = old_description;
+
         const res2 = await newRequest.post('/api/images/save', {...image})
         //console.log(res2);
         //console.log(url);
@@ -70,7 +73,7 @@ const Add = () => {
       });
 
 
-        await timeout(500);
+        await timeout(1000);
       navigate('/service/'+res.data.id);
 
     }catch(err){
