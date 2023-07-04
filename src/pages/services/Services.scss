@@ -68,6 +68,7 @@
   
           .sortType {
             font-weight: 500;
+            cursor: pointer;
           }
   
           img {
@@ -98,8 +99,10 @@
   
       .cards {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-content: flex-start;
         flex-wrap: wrap;
+       
       }
     }
   }
